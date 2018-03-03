@@ -7,7 +7,7 @@ var path = require("path");
 // Sets up the Express App
 
 var app = express();
-var PORT = process.env.PORT || 3002;
+var PORT = process.env.PORT || 3001;
 
 // Starts the server to begin listening
 
@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 
 var tables = [
     {
-        customerName: ,
-        customerEmail: $("#email"),
-        customerPhoneNumber: $("phoneNumber"),
+        customerName: "Kent",
+        customerEmail: "kentsEmail",
+        customerPhoneNumber: "123-456-6789",
         // customerID:
 
     }
@@ -33,9 +33,9 @@ var tables = [
 var waitList = [
     {
 
-        customerName: name,
-        customerEmail: email,
-        customerPhoneNumber: phoneNumber,
+        customerName: "Quintessa",
+        customerEmail: "QuintessasEmail",
+        customerPhoneNumber: "123-456-7890",
         // customerID:
 
     }
@@ -44,9 +44,9 @@ var waitList = [
 
 var reservation = [
     {
-        customerName: name,
-        customerEmail: email,
-        customerPhoneNumber: phoneNumber,
+        customerName: "Ozzy",
+        customerEmail: "OzzysEmail",
+        customerPhoneNumber: "123-456-7890",
         // customerID:
     }
 ]
