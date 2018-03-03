@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
   <title>Hot Restuarant-Tables</title>
 </head>
 
@@ -26,29 +27,71 @@
   <div class="row">
 
     <div class="col-lg-12">
-      <div class="panel panel-default">
+      <div class="panel panel-default" id="reservationTable">
         <div class="panel-heading">
-          <h3 class="panel-title">Panel title</h3>
+          <h3 class="panel-title">Current Reservations</h3>
         </div>
-        <div class="panel-body">
-          <div class="well"><h2>Demo Example</h2></div>
-          <div class="well"><h2>Demo Example</h2></div>
-          <div class="well"><h2>Demo Example</h2></div>
-          <div class="well"><h2>Demo Example</h2></div>
-          <div class="well"><h2>Demo Example</h2></div>
-          <div class="well"><h2>Demo Example</h2></div>
+        <div class="panel-body" id="resTable">
+          <!-- AJAX data should append here from jQuery below -->
         </div>
       </div>
+      <div class="panel panel-default" id="waitList">
+        <div class="panel-heading">
+          <h3 class="panel-title">Waiting List</h3>
+        </div>
+        <div class="panel-body" id="waitTable">
+          <!-- AJAX data should append here from Waitlist  -->
+        </div>
+       </div>
     </div>
-  </div>
-
-
 
   </div>
 
 
 
+  </div>
 
+<script type="text/javascript">
+
+
+    // populates the current reservation table
+    function reservationListPop() {
+
+      $.get("/api/tableslist", function(data) {
+        console.log(data);
+
+        for(var i = 0; i < data.length; i++){
+          var section = $("<div>");
+          section.addClass("well");
+          section.attr("id", "table" + i+1);
+          $("#resTable").append(section);
+
+          $("#table" + i+1).append("<h3>Table " + i+1 + " Reserved for: " + data.customerName + "<h3>");
+        };
+      });
+    };
+
+    // populates the wait list table
+    function waitListPop() {
+
+      $.get("/api/waitlist", function(data) {
+        console.log(data);
+
+        for(var i = 0; i < data.length; i++){
+          var section = $("<div>");
+          section.addClass("well");
+          section.attr("id", "waitTabletable" + i+1);
+          $("#waitTable").append(section);
+
+          $("#waitTable" + i+1).append("<h3>" + data.customerName + "<h3>");
+        };
+      });
+    };
+
+reservationListPop();
+waitListPop()
+
+</script>
 </body>
 
 </html>
