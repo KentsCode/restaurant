@@ -1,14 +1,17 @@
 body {
 	padding: 50px; 
-    background-color:#bec1c6;
-}
-background {
-    background-color:#232020;
+    /* background-color:#bec1c6; */
+    background-image: url("digital-drapes-15.jpg")
 }
 input {
     width: 25%;
 }
-
+.white-title {
+    color: white;
+}
+.panel-labels {
+    color: white;
+}
 .header-main {
     background-color: #829dc9;
 }
