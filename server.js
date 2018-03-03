@@ -7,7 +7,7 @@ var path = require("path");
 // Sets up the Express App
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3002;
 
 // Starts the server to begin listening
 
@@ -22,10 +22,10 @@ app.use(bodyParser.json());
 
 var tables = [
     {
-        customerName: name,
-        customerEmail: email,
-        customerPhoneNumber: phoneNumber,
-        // id:
+        customerName: ,
+        customerEmail: $("#email"),
+        customerPhoneNumber: $("phoneNumber"),
+        // customerID:
 
     }
 ]
@@ -36,7 +36,7 @@ var waitList = [
         customerName: name,
         customerEmail: email,
         customerPhoneNumber: phoneNumber,
-    // id
+        // customerID:
 
     }
 
@@ -51,13 +51,11 @@ var reservation = [
     }
 ]
 
-function CreateAreservation () {
-    AJAX.post();
-}
+// function CreateAreservation () {
+// }
 
-function viewTables () {
-    AJAX.Get();
-}
+// function viewTables () {
+// }
 
 
 // Routes
