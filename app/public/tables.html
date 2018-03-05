@@ -37,6 +37,7 @@
           <div class="well"><h2>Demo Example</h2></div>
           <div class="well"><h2>Demo Example</h2></div>
           <div class="well"><h2>Demo Example</h2></div>
+        <div id="tableDataSection"></div>
         </div>
       </div>
     </div>
@@ -50,5 +51,32 @@
 
 
 </body>
+<script type="text/javascript">
 
+//ajax call will grab data from api route and allow me to display the data on the html page
+function runTableQuery () {
+var currentURL = window.location.origin;
+            $.ajax({url: currentURL + "/api/tables", method: "GET"})
+              .done(function(tableData){
+                  console.log("URL: " + currentURL + "/api/tables");
+                  console.log(tableData);
+
+                  for(var i=0; i<tableData.length; i++) {
+                    var tableSection = $("<div>");
+                      tableDataSection.class("well");
+                      tableDataSection.attr("id", "tablewell-" + i+1);
+                      $("#tableDataSection").append(tableSection);
+
+                    var tableNum = i + 1;
+
+                    $("tablewell-" + i+1).append('<h2><span class="label">' + tableNum +
+                    + "</span> | " + tableData[i].customerID + "</h2>");
+
+                  }
+
+              });
+            
+          }
+          runTableQuery()
+</script>
 </html>

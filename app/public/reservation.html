@@ -64,6 +64,41 @@
         $("#main-navigation").on("click", function mainNavigation () {
 
         })
+
+        $(".submit").on("click", function(){
+
+            var newReservation = {
+                customerName: $('#name').val().trim(),
+                phoneNumber: $('#phone').val().trim(),
+                customerEmail: $('#email').val().trim(),
+                customerID: $('#id').val().trim(),
+
+            }
+
+            console.log(newReservation);
+
+            var currentURL = window.location.origin;
+            $.post(currentURL + "/api/tables", newReservation, function(data){
+                if(data==true) {
+                    alert("Your Reservation Has Been Booked Successfully!")
+                }
+                if(data==false) {
+                    alert("Sorry, All Tables Have Been Booked, You Have Been Placed On The Waiting List");
+
+                }
+
+                $('#name').val(" ");
+                $('#phone').val(" ");
+                $('#email').val(" ");
+                $('#id').val(" ");
+
+
+            })
+
+            return false;
+
+
+        })
     
     </script>
 </body>
