@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reservation Page</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
@@ -50,7 +50,7 @@
                             <input class="form-control" id="id" type="text">
                         </div>
 
-                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                        <button type="submit" id="submit-button" class="btn btn-primary submit">Submit</button>
                     </form>
 
                 </div>
@@ -61,6 +61,7 @@
 
     <script src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
+<<<<<<< HEAD:app/public/reservation.html
         $("#main-navigation").on("click", function mainNavigation () {
 
         })
@@ -99,6 +100,23 @@
 
 
         })
+=======
+        $("#submit-button").on("click", function mainNavigation (event) {
+            event.preventDefault();
+            console.log($("#name").val().trim());
+            var newReservation = {
+                name: $("#name").val().trim(),
+                phone: $("#phone").val().trim(),
+                email: $("#email").val().trim(),
+                uniqueID: $("#id").val().trim()
+            }
+            $.post("/reservation", newReservation)
+                .then(function(data) {
+                console.log(data);
+                alert("Adding reservation...");
+            });
+        });
+>>>>>>> 820855ae107fa0ddb1d935062adf02a2b21387f5:reservation.html
     
     </script>
 </body>
